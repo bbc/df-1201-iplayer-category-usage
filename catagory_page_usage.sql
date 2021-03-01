@@ -78,5 +78,8 @@ FROM dataforce_sandbox.vb_cats
 WHERE app_type IS NOT NULL
 GROUP BY 1,2;
 
-SELECT * FROM dataforce_sandbox.vb_cats
-WHERE hashed_id IS NULL LIMIT 10;
+SELECT click_container, count(*) as clicks, sum(start_flag) as starts, sum(complete_flag) as completes
+FROM dataforce_sandbox.vb_cats
+--WHERE category = 'drama_and_soaps'
+GROUP BY 1
+ORDER BY 2 DESC;
